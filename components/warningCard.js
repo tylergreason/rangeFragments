@@ -12,7 +12,9 @@ const warningCard = (options={}) => {
                 <div class='title'>
                     ${options.title}
                 </div>
-                ${options.text}
+                <div class='text'>
+                    ${options.text}
+                </div>
             </div>
         </div>
     `

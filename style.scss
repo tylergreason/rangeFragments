@@ -1,0 +1,77 @@
+$boldRed: #FF4E00; 
+$orange: rgb(255, 172, 17);
+$backgroundColor: rgb(255, 253, 238);
+
+.warningCard {
+    $cardWidth: 400px; 
+    $cardHeight: 200px; 
+    $rows: 4; 
+    $columns: 10; 
+
+    // center warning card
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+
+    width: $cardWidth; 
+    height: $cardHeight; 
+    background-color: $backgroundColor;
+    border: 3px solid black; 
+    border-radius: 10px; 
+
+    display: grid; 
+    grid-template-columns: repeat($columns, 1fr);
+    grid-template-rows: repeat($rows, 1fr);
+
+    & .warningCard__left {
+        grid-row: 1/5; 
+        grid-column: 1/4; 
+        
+        & svg {
+            width: 100%; 
+            height: 100%; 
+            fill: $boldRed;
+        }
+    }
+    & .warningCard__right {
+        grid-row: 1/5; 
+        grid-column: 4/11; 
+        & .title {
+            height: $cardHeight/$rows;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+        & .text {
+            box-sizing: border-box;
+            padding: 5px;
+            height: 3 * $cardHeight/$rows; 
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: $boldRed;
+            border-radius: 7px 0px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+    }
+
+    animation-duration: 0.5s; 
+    animation-fill-mode: forwards;
+    animation-name: warningShadow; 
+}
+
+@keyframes warningShadow {
+    from {
+        box-shadow: 0px 0px $orange;
+        opacity: 0; 
+    }
+    to {
+        box-shadow: -10px 10px $orange;
+        opacity: 1;
+    }
+}
